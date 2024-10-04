@@ -5,16 +5,6 @@ import Category from "../Category";
 import Date from "../Date";
 import { News } from "@/app/_libs/microcms";
 
-type News = {
-  id: string;
-  title: string;
-  category: {
-    name: string;
-  };
-  publishedAt: string;
-  createdAt: string;
-};
-
 type Props = {
   news: News[];
 };
