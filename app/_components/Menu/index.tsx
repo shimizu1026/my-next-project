@@ -31,7 +31,7 @@ export default function Menu() {
             width={24}
             height={24}
             priority
-          ></Image>
+          />
         </button>
       </nav>
       <button className={styles.button} onClick={open}>
