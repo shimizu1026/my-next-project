@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { getCategoryDetail, getNewsList } from "@/app/_libs/microcms";
 import { notFound } from "next/navigation";
 import NewsList from "@/app/_components/NewsList";
@@ -25,3 +26,21 @@ export default async function Page({ params }: Props) {
   );
 
 }
+=======
+import { getNewsList } from "@/app/_libs/microcms";
+import NewsList from "@/app/_components/NewsList";
+
+type Props = {
+    params: {
+        id: string;
+    };
+};
+
+export default async function Page({ params }: Props) {
+  const { contents: news } = await getNewsList({
+    filters: `category[equals]${params.id}`,
+  })
+
+  return <NewsList news={news} />;
+}
+>>>>>>> c57011d87e70410b3c77df6084175bdba6f33680
