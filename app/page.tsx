@@ -8,6 +8,8 @@ import ButtonLink from "@/app/_components/ButtonLink";
 import { url } from "inspector";
 import { profile } from "console";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const data = await getNewsList({
     limit: TOP_NEWS_LIMIT,
