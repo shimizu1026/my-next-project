@@ -12,34 +12,38 @@ export async function createContactData(_prevState: any, formData: FormData) {
 		company: formData.get("company") as string,
 		email: formData.get("email") as string,
 		message: formData.get("message") as string,
-	}
-};
+	};
 
 if (!rawFormData.lastname) {
 	return {
 		status: "error",
 		message: "姓を入力してください",
 	};
+}
 if (!rawFormData.firstname) {
 	return {
 		staturn: "error",
 		message: "名を入力してください",
 	};
+}
 if (!rawFormData.company) {
 	return {
 		status: "error",
 		message: "会社名を入力してください",
 	};
+}
 if (!rawFormData.email) {
 	return {
 		status: "error",
 		message: "メールアドレスを入力してください",
 	};
-if (!validateEmail.email) {
+}
+if (!validateEmail(rawFormData.email)) {
 	return {
 		status: "error",
 		message: "メールアドレスの形式が誤っています",
 	};
+}
 if (!rawFormData.message) {
 	return {
 		status: "error",
@@ -49,3 +53,4 @@ if (!rawFormData.message) {
 return {
 	status: "success", message: "OK"
 };
+}
