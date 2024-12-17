@@ -38,6 +38,25 @@ if (!rawFormData.email) {
 		message: "メールアドレスを入力してください",
 	};
 }
+
+const result = await fetch(
+	"",
+	{
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			fields: [
+				{
+					objectTypeId: "0-1",
+					name: "lastname",
+					value: rawFormData.lastname,
+				},
+			]
+		})
+	}
+)
 if (!validateEmail(rawFormData.email)) {
 	return {
 		status: "error",
