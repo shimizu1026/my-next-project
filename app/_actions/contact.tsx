@@ -40,7 +40,7 @@ if (!rawFormData.email) {
 }
 
 const result = await fetch(
-	"",
+	"https://api.hsforms.com/subumissions/v3/integration/subumit/${process.env.HUBSPOT_PORTAL_ID}/${prcess.env.HUBSPOT_FORM_ID}",
 	{
 		method: "POST",
 		headers: {
@@ -53,22 +53,53 @@ const result = await fetch(
 					name: "lastname",
 					value: rawFormData.lastname,
 				},
-			]
-		})
-	}
-)
-if (!validateEmail(rawFormData.email)) {
+				{
+					objectTypeId: "0-1",
+					name: "firstname",
+					value: rawFormData.firstname,
+				},
+				{
+					objectTypeId: "0-1",
+					name: "company",
+					value: rawFormData.company,
+				},
+				{
+					objectTypeId: "0-1",
+					name: "email",
+					value: rawFormData.email,
+				},
+				{
+					objectTypeId: "0-1",
+					name: "message",
+					value: rawFormData.message,
+				},
+			],
+		}),
+	},
+);
+
+try {
+	await result.json();
+} catch (e) {
+	console.log(e);
 	return {
 		status: "error",
-		message: "メールアドレスの形式が誤っています",
+		message: "お問い合わせに失敗しました。",
 	};
 }
-if (!rawFormData.message) {
-	return {
-		status: "error",
-		message: "メッセージを入力してください",
-	};
-}
+
+// if (!validateEmail(rawFormData.email)) {
+// 	return {
+// 		status: "error",
+// 		message: "メールアドレスの形式が誤っています",
+// 	};
+// }
+// if (!rawFormData.message) {
+// 	return {
+// 		status: "error",
+// 		message: "メッセージを入力してください",
+// 	};
+// }
 return {
 	status: "success", message: "OK"
 };
