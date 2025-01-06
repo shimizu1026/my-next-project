@@ -34,6 +34,7 @@ export default function NewsList({ news }: Props) {
                 alt="No Image"
                 width={1200}
                 height={630}
+				loading="eager"
               />
             )}
             <dl className={styles.content}>
